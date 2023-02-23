@@ -24,21 +24,21 @@ import { GiWorld } from "react-icons/gi";
 import { FaTwitter, FaYoutube, FaFacebook, FaInstagram } from "react-icons/fa";
 import { MdAdminPanelSettings } from "react-icons/md";
 
-const link = [
+const defaultlinks = [
   { linkName: "About", path: "/about" },
   { linkName: "Contact", path: "/contact" },
 ];
 
 const blogLinks = [
-  { linkName: "All Blog", path: "/all" },
-  { linkName: "Latest", path: "/latest" },
-  { linkName: "Europe", path: "/europe" },
-  { linkName: "Asia", path: "/asia" },
-  { linkName: "Ocenaia", path: "/oceania" },
-  { linkName: "Africa", path: "/africa" },
+  { linkName: "All Blog", category: "/all" },
+  { linkName: "Latest", category: "/latest" },
+  { linkName: "Europe", category: "/europe" },
+  { linkName: "Asia", category: "/asia" },
+  { linkName: "Ocenaia", category: "/oceania" },
+  { linkName: "Africa", category: "/africa" },
 ];
 
-const NavLink = ({ path, children }) => {
+const NavLink = ({ path, children }) => (
   <Link
     as={ReactLink}
     to={path}
@@ -51,8 +51,8 @@ const NavLink = ({ path, children }) => {
     }}
   >
     {children}
-  </Link>;
-};
+  </Link>
+);
 
 const Navbar = () => {
   const { isOpen, onClose, onOpen } = useDisclosure();
@@ -71,7 +71,7 @@ const Navbar = () => {
       <HStack>
         <Link
           as={ReactLink}
-          to="/"
+          to="/asd"
           style={{ textDecoration: "none" }}
           onMouseEnter={() => setLogoHover(true)}
           onMouseLeave={() => setLogoHover(false)}
@@ -83,6 +83,25 @@ const Navbar = () => {
             </Text>
           </Flex>
         </Link>
+        <HStack display={{ base: "none", md: "flex" }} pl="10">
+          {defaultlinks.map((item) => (
+            <NavLink key={item.linkName} path={item.path}>
+              {item.linkName}
+            </NavLink>
+          ))}
+          <Menu>
+            <MenuButton fontWeight="semibold" p="2" _hover={{ bg: mode("blue.200", "blue.800") }}>
+              Blog
+            </MenuButton>
+            <MenuList>
+              {blogLinks.map((item) => (
+                <MenuItem key={item.linkName} as={ReactLink} to={`/blog/${item.category}`}>
+                  {item.linkName}
+                </MenuItem>
+              ))}
+            </MenuList>
+          </Menu>
+        </HStack>
       </HStack>
     </Box>
   );

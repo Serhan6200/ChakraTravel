@@ -18,6 +18,7 @@ import {
   MenuItem,
   MenuList,
   MenuButton,
+  ButtonGroup,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { GiWorld } from "react-icons/gi";
@@ -102,6 +103,20 @@ const Navbar = () => {
               </MenuList>
             </Menu>
           </HStack>
+        </HStack>
+        <HStack>
+          <ButtonGroup spacing="0" variant="ghost" mr="3" display={{ base: "none", md: "flex" }}>
+            <IconButton as="a" href="#" icon={<FaFacebook fontSize="1.25rem" />}></IconButton>
+            <IconButton as="a" href="#" icon={<FaTwitter fontSize="1.25rem" />}></IconButton>
+            <IconButton as="a" href="#" icon={<FaYoutube fontSize="1.25rem" />}></IconButton>
+            <IconButton as="a" href="#" icon={<FaInstagram fontSize="1.25rem" />}></IconButton>
+          </ButtonGroup>
+          <Icon
+            cursor="pointer"
+            as={colorMode === "light" ? MoonIcon : SunIcon}
+            onClick={() => toggleColorMode()}
+            w="40px"
+          />
         </HStack>
       </Flex>
     </Box>

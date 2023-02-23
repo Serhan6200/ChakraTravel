@@ -57,6 +57,7 @@ const NavLink = ({ path, children }) => {
 const Navbar = () => {
   const { isOpen, onClose, onOpen } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
+  const { logoHover, setLogoHover } = useState();
   return (
     <Box bg={mode("blue.200", "blue.900")} px={4}>
       <Flex h="16" alignItems="center" justifyContent="space-between">
@@ -67,6 +68,22 @@ const Navbar = () => {
           onClick={isOpen ? onClose : onOpen}
         ></IconButton>
       </Flex>
+      <HStack>
+        <Link
+          as={ReactLink}
+          to="/"
+          style={{ textDecoration: "none" }}
+          onMouseEnter={() => setLogoHover(true)}
+          onMouseLeave={() => setLogoHover(false)}
+        >
+          <Flex alignItems="center">
+            <Icon as={GiWorld} h="10" w="10" color={logoHover ? "gray.200" : mode("gray.600", "gray.400")} />
+            <Text fontWeight="extrabold" color={mode("gray.600", "gray.400")}>
+              TravelBay
+            </Text>
+          </Flex>
+        </Link>
+      </HStack>
     </Box>
   );
 };

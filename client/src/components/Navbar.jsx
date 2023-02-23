@@ -58,7 +58,7 @@ const NavLink = ({ path, children }) => (
 const Navbar = () => {
   const { isOpen, onClose, onOpen } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
-  const { logoHover, setLogoHover } = useState();
+  const [logoHover, setLogoHover] = useState();
   return (
     <Box bg={mode("blue.200", "blue.900")} px={4}>
       <Flex h="16" alignItems="center" justifyContent="space-between">

@@ -67,42 +67,43 @@ const Navbar = () => {
           display={{ md: "none" }}
           onClick={isOpen ? onClose : onOpen}
         ></IconButton>
-      </Flex>
-      <HStack>
-        <Link
-          as={ReactLink}
-          to="/asd"
-          style={{ textDecoration: "none" }}
-          onMouseEnter={() => setLogoHover(true)}
-          onMouseLeave={() => setLogoHover(false)}
-        >
-          <Flex alignItems="center">
-            <Icon as={GiWorld} h="10" w="10" color={logoHover ? "gray.200" : mode("gray.600", "gray.400")} />
-            <Text fontWeight="extrabold" color={mode("gray.600", "gray.400")}>
-              TravelBay
-            </Text>
-          </Flex>
-        </Link>
-        <HStack display={{ base: "none", md: "flex" }} pl="10">
-          {defaultlinks.map((item) => (
-            <NavLink key={item.linkName} path={item.path}>
-              {item.linkName}
-            </NavLink>
-          ))}
-          <Menu>
-            <MenuButton fontWeight="semibold" p="2" _hover={{ bg: mode("blue.200", "blue.800") }}>
-              Blog
-            </MenuButton>
-            <MenuList>
-              {blogLinks.map((item) => (
-                <MenuItem key={item.linkName} as={ReactLink} to={`/blog/${item.category}`}>
-                  {item.linkName}
-                </MenuItem>
-              ))}
-            </MenuList>
-          </Menu>
+
+        <HStack>
+          <Link
+            as={ReactLink}
+            to="/asd"
+            style={{ textDecoration: "none" }}
+            onMouseEnter={() => setLogoHover(true)}
+            onMouseLeave={() => setLogoHover(false)}
+          >
+            <Flex alignItems="center">
+              <Icon as={GiWorld} h="10" w="10" ml="5" color={logoHover ? "gray.200" : mode("gray.600", "gray.400")} />
+              <Text fontWeight="extrabold" ml="2" color={mode("gray.600", "gray.400")}>
+                TravelArt
+              </Text>
+            </Flex>
+          </Link>
+          <HStack display={{ base: "none", md: "flex" }} pl="10">
+            {defaultlinks.map((item) => (
+              <NavLink key={item.linkName} path={item.path}>
+                {item.linkName}
+              </NavLink>
+            ))}
+            <Menu>
+              <MenuButton fontWeight="semibold" p="2" _hover={{ bg: mode("blue.200", "blue.800") }}>
+                Blog
+              </MenuButton>
+              <MenuList>
+                {blogLinks.map((item) => (
+                  <MenuItem key={item.linkName} as={ReactLink} to={`/blog/${item.category}`}>
+                    {item.linkName}
+                  </MenuItem>
+                ))}
+              </MenuList>
+            </Menu>
+          </HStack>
         </HStack>
-      </HStack>
+      </Flex>
     </Box>
   );
 };

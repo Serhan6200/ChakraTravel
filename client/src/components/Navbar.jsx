@@ -119,6 +119,42 @@ const Navbar = () => {
           />
         </HStack>
       </Flex>
+      {isOpen ? (
+        <Box pb="4" display={{ md: "none" }}>
+          <Stack as="nav" spacing="4">
+            {defaultlinks.map((item) => (
+              <NavLink key={item.linkName} path={item.path}>
+                {item.linkName}
+              </NavLink>
+            ))}
+          </Stack>
+          <Menu>
+            <MenuButton
+              textAlign="left"
+              w="full"
+              mt="3"
+              fontWeight="semibold"
+              p="2"
+              _hover={{ bg: mode("blue.200", "blue.800") }}
+            >
+              Blog
+            </MenuButton>
+            <MenuList>
+              {blogLinks.map((item) => (
+                <MenuItem key={item.linkName} as={ReactLink} to={`/blog/${item.category}`}>
+                  {item.linkName}
+                </MenuItem>
+              ))}
+            </MenuList>
+          </Menu>
+          <ButtonGroup spacing="0" variant="ghost" mr="3" mt="5">
+            <IconButton as="a" href="#" icon={<FaFacebook fontSize="1.25rem" />}></IconButton>
+            <IconButton as="a" href="#" icon={<FaTwitter fontSize="1.25rem" />}></IconButton>
+            <IconButton as="a" href="#" icon={<FaYoutube fontSize="1.25rem" />}></IconButton>
+            <IconButton as="a" href="#" icon={<FaInstagram fontSize="1.25rem" />}></IconButton>
+          </ButtonGroup>
+        </Box>
+      ) : null}
     </Box>
   );
 };

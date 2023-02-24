@@ -48,7 +48,7 @@ const NavLink = ({ path, children }) => (
     fontWeight="semibold"
     _hover={{
       textDecoration: "none",
-      bg: mode("blue.100", "blue:800"),
+      bg: mode("blue.100", "blue.800"),
     }}
   >
     {children}
@@ -58,7 +58,7 @@ const NavLink = ({ path, children }) => (
 const Navbar = () => {
   const { isOpen, onClose, onOpen } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
-  const [logoHover, setLogoHover] = useState();
+  const [logoHover, setLogoHover] = useState(false);
   return (
     <Box bg={mode("blue.200", "blue.900")} px={4}>
       <Flex h="16" alignItems="center" justifyContent="space-between">
@@ -91,7 +91,7 @@ const Navbar = () => {
               </NavLink>
             ))}
             <Menu>
-              <MenuButton fontWeight="semibold" p="2" _hover={{ bg: mode("blue.200", "blue.800") }}>
+              <MenuButton fontWeight="semibold" p="2" _hover={{ bg: mode("blue.100", "blue.800") }}>
                 Blog
               </MenuButton>
               <MenuList>
@@ -135,7 +135,7 @@ const Navbar = () => {
               mt="3"
               fontWeight="semibold"
               p="2"
-              _hover={{ bg: mode("blue.200", "blue.800") }}
+              _hover={{ bg: mode("blue.100", "blue.800") }}
             >
               Blog
             </MenuButton>

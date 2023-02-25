@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server/server",
-    "dev": "nodemon server/server"
+    "server": "node server/server",
+    "dev": "nodemon server/server",
+    "client": "npm run start --prefix client",
+    "app": "concurrently npm \"npm run server\" \"npm run client\""
   },
   "author": "Serhan ÇINAR",
   "license": "ISC",

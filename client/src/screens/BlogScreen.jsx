@@ -47,7 +47,16 @@ const BlogScreen = () => {
           <AlertDescription>{error}</AlertDescription>
         </Alert>
       ) : (
-        <p>The Actual Component</p>
+        <>
+          <Heading>{category.charAt(0).toUpperCase() + category.slice(1)} Blogs</Heading>
+          {blogPosts.map((item) => (
+            <Box key={item.id} maxW={{ base: "3xl", lg: "7xl" }} px={{ base: "6", md: "8", lg: "20" }} py="6">
+              <Stack direction={{ base: "column", lg: "row" }} spacing="7">
+                <Image src={item.image} min={{ lg: "400px" }} maxH="280px" loading={<Spinner />} fit="cover"></Image>
+              </Stack>
+            </Box>
+          ))}
+        </>
       )}
     </VStack>
   );
